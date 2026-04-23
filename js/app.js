@@ -80,7 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(window.i18nManager.t('error_generic'));
             }
 
-            const shortUrl = `${window.location.origin}/${slug}`;
+            // 現在のページのURL（末尾のスラッシュを除いたもの）を取得して、スラグを繋げる
+            const baseUrl = window.location.href.split('?')[0].split('#')[0].replace(/\/index\.html$/, '').replace(/\/$/, '');
+            const shortUrl = `${baseUrl}/${slug}`;
             shortUrlOutput.value = shortUrl;
             resultDiv.style.display = 'block';
             form.reset();

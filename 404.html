@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -23,13 +23,13 @@
             <p data-i18n="checking_link" style="font-size: 1.1rem; font-weight: 600;">リンクを確認しています...</p>
         </div>
         <div id="error-action" style="display: none; margin-top: 2rem;">
-            <a href="/" data-i18n="back_to_top" style="color: var(--primary); text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">← トップに戻る</a>
+            <a href="./" data-i18n="back_to_top" style="color: var(--primary); text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">← トップに戻る</a>
         </div>
     </div>
 
-    <script src="/js/config.js"></script>
-    <script src="/js/i18n.js"></script>
-    <script src="/js/redirect.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/i18n.js"></script>
+    <script src="./js/redirect.js"></script>
     <script>
         // リダイレクトページでもテーマを適用
         const currentTheme = localStorage.getItem('litr_theme') || 'light';

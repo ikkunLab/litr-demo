@@ -4,10 +4,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const statusMessage = document.getElementById('status-message');
     const errorAction = document.getElementById('error-action');
 
-    const slug = window.location.pathname.split('/').filter(p => p !== "").pop();
+    // URLのパスを分解して、最後の空でない要素をスラグとして取得
+    // 例: /litr-demo/abcd -> abcd
+    // 例: /abcd -> abcd
+    const pathParts = window.location.pathname.split('/').filter(p => p !== "" && p !== "index.html" && p !== "404.html");
+    
+    // もしパスの最後に今のリポジトリ名と同じものが来ていたら、それはスラグがないということ
+    // (GitHub Pagesのトップページにアクセスした時の対策)
+    const slug = pathParts.length > 0 ? pathParts.pop() : null;
 
-    if (!slug || slug === 'index.html' || slug === '404.html') {
-        window.location.replace('/');
+    if (!slug || slug === 'litr-demo') {
+        window.location.replace('./');
         return;
     }
 
