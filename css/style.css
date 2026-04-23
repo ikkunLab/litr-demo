@@ -1,0 +1,398 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+:root {
+    --primary: #6366f1;
+    --primary-glow: rgba(99, 102, 241, 0.4);
+    --accent: #a855f7;
+    --bg-light: #f8fafc;
+    --card-light: rgba(255, 255, 255, 0.4);
+    --text-light: #0f172a;
+    
+    --bg-dark: #020617;
+    --card-dark: rgba(15, 23, 42, 0.6);
+    --text-dark: #f8fafc;
+
+    --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-theme="dark"] {
+    --bg-color: var(--bg-dark);
+    --card-bg: var(--card-dark);
+    --text-color: var(--text-dark);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"], :root:not([data-theme="dark"]) {
+    --bg-color: var(--bg-light);
+    --card-bg: var(--card-light);
+    --text-color: var(--text-light);
+    --border: rgba(0, 0, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- 背景オーロラ --- */
+.background-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.aurora {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    background: radial-gradient(circle at 20% 30%, var(--primary) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--accent) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #3b82f6 0%, transparent 50%);
+    filter: blur(100px);
+    opacity: 0.3;
+    animation: aurora-move 20s infinite alternate ease-in-out;
+}
+
+@keyframes aurora-move {
+    0% { transform: rotate(0deg) scale(1); }
+    100% { transform: rotate(5deg) scale(1.05); }
+}
+
+/* --- メインレイアウト --- */
+.main-layout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px; /* PCでは幅広く */
+    padding: 3rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border-radius: 40px;
+    border: 1px solid var(--border);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.3);
+    animation: container-entry 0.8s var(--transition);
+}
+
+@keyframes container-entry {
+    from { opacity: 0; transform: scale(0.95) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* --- ヘッダー --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main-logo-svg {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+    transition: var(--transition);
+}
+
+.main-logo-svg:hover {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin-top: 0.25rem;
+}
+
+.controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    cursor: pointer;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* --- ダッシュボード・フォーム --- */
+.dashboard-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* PCではオプションを3列に */
+.options-row {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-left: 0.5rem;
+}
+
+input {
+    width: 100%;
+    padding: 1.1rem 1.4rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: var(--transition);
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-glow);
+}
+
+button.primary-btn {
+    width: 100%;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 1rem;
+    box-shadow: 0 15px 30px -10px var(--primary-glow);
+    transition: var(--transition);
+}
+
+button.primary-btn:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 40px -10px var(--primary-glow);
+}
+
+/* --- 結果表示 --- */
+#result {
+    margin-top: 3rem;
+    animation: result-entry 0.6s var(--transition);
+}
+
+@keyframes result-entry {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-content {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.result-content h2 {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    opacity: 0.7;
+}
+
+.short-url-box {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.short-url-box input {
+    background: rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.copy-btn {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.copy-btn:hover {
+    transform: scale(1.05);
+}
+
+/* --- トースト --- */
+.toast {
+    position: fixed;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 1.2rem 2.5rem;
+    border-radius: 100px;
+    font-weight: 700;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: none;
+    animation: toast-in 0.4s var(--transition);
+}
+
+@keyframes toast-in {
+    from { transform: translate(-50%, 100px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.error {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #ef4444;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* --- フッター・クレジット --- */
+footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.credit-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.credit-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.4;
+}
+
+.credit-names {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+.credit-names span {
+    transition: var(--transition);
+    cursor: default;
+}
+
+.credit-names span:hover {
+    opacity: 1;
+    color: var(--primary);
+}
+
+.tech-tags {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tech-tag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.tech-tag:hover {
+    background: var(--primary-glow);
+    opacity: 1;
+    border-color: var(--primary);
+}
+
+/* スマホ用フッター調整 */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .credit-names, .tech-tags {
+        justify-content: center;
+    }
+}

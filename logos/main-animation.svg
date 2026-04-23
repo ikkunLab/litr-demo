@@ -1,0 +1,92 @@
+﻿<svg width="200" height="200" viewBox="0 0 200 200" fill="none"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="200" y2="200">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="200" height="200" rx="40" fill="#0B0F1A"/>
+
+  <!-- L -->
+  <path d="M60 60 V140 H120"
+        stroke="white"
+        stroke-width="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- 流れ（安定版・加速） -->
+  <path d="M60 60 C90 40, 130 50, 140 90"
+        stroke="url(#g)"
+        stroke-width="6"
+        fill="none"
+        stroke-linecap="round"
+        pathLength="1"
+        stroke-dasharray="1"
+        stroke-dashoffset="1">
+
+    <animate attributeName="stroke-dashoffset"
+             from="1" to="0"
+             dur="1.2s"
+             begin="0.3s"
+             calcMode="spline"
+             keySplines="0.4 0 0.2 1"
+             fill="freeze"/>
+  </path>
+
+  <!-- 終点（演出完成版） -->
+  <g transform="translate(140,90)">
+    <g opacity="0.3">
+
+      <circle r="5" fill="#22D3EE"/>
+      <circle r="10" stroke="url(#g)" stroke-width="2.5" fill="none"/>
+
+      <!-- フェード -->
+      <animate attributeName="opacity"
+               values="0.3;0.3;1"
+               keyTimes="0;0.8;1"
+               dur="1.5s"
+               fill="freeze"/>
+
+      <!-- インパクト -->
+      <animateTransform attributeName="transform"
+                        type="scale"
+                        values="1;1;1.35;0.95;1"
+                        keyTimes="0;0.8;0.9;0.95;1"
+                        dur="1.5s"
+                        fill="freeze"/>
+    </g>
+  </g>
+
+  <!-- 始点コア -->
+  <circle cx="60" cy="60" r="5" fill="url(#g)">
+    <animate attributeName="r"
+             values="5;7;5"
+             dur="0.4s"
+             begin="0s"
+             fill="freeze"/>
+  </circle>
+
+  <!-- 始点リング -->
+  <circle cx="60" cy="60" r="9"
+          stroke="#22D3EE"
+          stroke-width="2"
+          fill="none">
+
+    <animate attributeName="r"
+             values="9;15;9;13;9"
+             keyTimes="0;0.3;0.5;0.7;1"
+             dur="1.2s"
+             fill="freeze"/>
+
+    <animate attributeName="opacity"
+             values="1;0.15;1;0.3;0.9"
+             keyTimes="0;0.3;0.5;0.7;1"
+             dur="1.2s"
+             fill="freeze"/>
+  </circle>
+
+</svg>

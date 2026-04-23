@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Litr - Loading...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- 超高級オーロラ背景 -->
+    <div class="background-wrapper">
+        <div class="aurora"></div>
+    </div>
+
+    <div class="container" style="text-align: center;">
+        <div class="logo" style="margin-bottom: 2rem;">LITR</div>
+        <div id="status-message">
+            <p data-i18n="checking_link" style="font-size: 1.1rem; font-weight: 600;">リンクを確認しています...</p>
+        </div>
+        <div id="error-action" style="display: none; margin-top: 2rem;">
+            <a href="/" data-i18n="back_to_top" style="color: var(--primary); text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">← トップに戻る</a>
+        </div>
+    </div>
+
+    <script src="/js/config.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/redirect.js"></script>
+    <script>
+        // リダイレクトページでもテーマを適用
+        const currentTheme = localStorage.getItem('litr_theme') || 'light';
+        document.body.setAttribute('data-theme', currentTheme);
+    </script>
+</body>
+</html>

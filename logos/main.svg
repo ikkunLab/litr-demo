@@ -1,0 +1,44 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="200" y2="200">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="200" height="200" rx="40" fill="#0B0F1A"/>
+
+  <!-- L -->
+  <path d="M60 60 V140 H120"
+        stroke="white"
+        stroke-width="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+
+  <!-- 完全に描かれたライン -->
+  <path d="M60 60 C90 40, 130 50, 140 90"
+        stroke="url(#g)"
+        stroke-width="6"
+        fill="none"
+        stroke-linecap="round"/>
+
+  <!-- 終点（確定状態） -->
+  <g transform="translate(140,90)">
+    <circle r="5" fill="#22D3EE"/>
+    <circle r="10" stroke="url(#g)" stroke-width="2.5" fill="none"/>
+  </g>
+
+  <!-- 始点 -->
+  <circle cx="60" cy="60" r="5" fill="url(#g)"/>
+
+  <!-- 始点リング（余韻残し） -->
+  <circle cx="60" cy="60" r="9"
+          stroke="#22D3EE"
+          stroke-width="2"
+          fill="none"
+          opacity="0.9"/>
+
+</svg>
