@@ -77,7 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (error.code === '23505') {
                     throw new Error(window.i18nManager.t('error_duplicate'));
                 }
-                throw new Error(window.i18nManager.t('error_generic'));
+                // 生のエラーメッセージを表示するように変更
+                throw new Error(error.message || window.i18nManager.t('error_generic'));
             }
 
             // 現在のページのURL（末尾のスラッシュを除いたもの）を取得して、スラグを繋げる
