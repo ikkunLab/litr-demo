@@ -20,37 +20,60 @@
     <div class="main-layout">
         <div class="container">
             <header>
-            <div class="header-left">
-                <div class="logo-wrapper">
-                    <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="main-logo-svg">
-                        <defs>
-                            <linearGradient id="g-logo" x1="0" y1="0" x2="200" y2="200">
-                                <stop offset="0%" stop-color="#6366F1"/>
-                                <stop offset="100%" stop-color="#22D3EE"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="200" height="200" rx="40" fill="#0B0F1A"/>
-                        <path d="M60 60 V140 H120" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M60 60 C90 40, 130 50, 140 90" stroke="url(#g-logo)" stroke-width="6" fill="none" stroke-linecap="round"/>
-                        <g transform="translate(140,90)">
-                            <circle r="5" fill="#22D3EE"/>
-                            <circle r="10" stroke="url(#g-logo)" stroke-width="2.5" fill="none"/>
-                        </g>
-                        <circle cx="60" cy="60" r="5" fill="url(#g-logo)"/>
-                        <circle cx="60" cy="60" r="9" stroke="#22D3EE" stroke-width="2" fill="none" opacity="0.9"/>
-                    </svg>
-                    <span class="logo-text">LITR</span>
+                <div class="header-left">
+                    <div class="logo-wrapper">
+                        <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="main-logo-svg">
+                            <defs>
+                                <linearGradient id="g-logo" x1="0" y1="0" x2="200" y2="200">
+                                    <stop offset="0%" stop-color="#6366F1"/>
+                                    <stop offset="100%" stop-color="#22D3EE"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="200" height="200" rx="40" fill="#0B0F1A"/>
+                            <path d="M60 60 V140 H120" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M60 60 C90 40, 130 50, 140 90" stroke="url(#g-logo)" stroke-width="6" fill="none" stroke-linecap="round"/>
+                            <g transform="translate(140,90)">
+                                <circle r="5" fill="#22D3EE"/>
+                                <circle r="10" stroke="url(#g-logo)" stroke-width="2.5" fill="none"/>
+                            </g>
+                            <circle cx="60" cy="60" r="5" fill="url(#g-logo)"/>
+                            <circle cx="60" cy="60" r="9" stroke="#22D3EE" stroke-width="2" fill="none" opacity="0.9"/>
+                        </svg>
+                        <span class="logo-text">LITR</span>
+                    </div>
+                    <p class="subtitle" data-i18n="subtitle">匿名・高機能・短縮URLマネージャー</p>
                 </div>
-                <p class="subtitle" data-i18n="subtitle">匿名・高機能・短縮URLマネージャー</p>
-            </div>
                 <div class="controls">
                     <button class="icon-btn" id="lang-toggle">JP</button>
                     <button class="icon-btn" id="theme-toggle">🌙</button>
                 </div>
             </header>
 
+            <!-- リンク作成フォーム -->
             <form id="link-form" class="dashboard-form">
-                <!-- (中略) -->
+                <div class="form-row main-row">
+                    <div class="form-group">
+                        <label data-i18n="url_label">転送先URL</label>
+                        <input type="url" id="url" data-i18n="url_placeholder" placeholder="https://example.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-row options-row">
+                    <div class="form-group">
+                        <label data-i18n="slug_label">カスタムスラグ</label>
+                        <input type="text" id="slug" data-i18n="slug_placeholder" placeholder="my-secret-link">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="limit_label">アクセス上限</label>
+                        <input type="number" id="limit" min="1" data-i18n="limit_placeholder" placeholder="例: 5">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="expiry_label">有効期限</label>
+                        <input type="datetime-local" id="expiry">
+                    </div>
+                </div>
+                
+                <button type="submit" id="submit-btn" class="primary-btn" data-i18n="submit_btn">短縮URLを作成</button>
             </form>
 
             <!-- 管理パネル (初期状態は非表示) -->
@@ -84,6 +107,7 @@
                 </div>
             </div>
             
+            <!-- 作成結果 -->
             <div id="result">
                 <div class="result-content">
                     <h2 data-i18n="success_title">作成完了！</h2>
