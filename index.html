@@ -50,39 +50,56 @@
             </header>
 
             <form id="link-form" class="dashboard-form">
-                <!-- 1段目: メインURL -->
-                <div class="form-row main-row">
-                    <div class="form-group">
-                        <label data-i18n="url_label">転送先URL</label>
-                        <input type="url" id="url" data-i18n="url_placeholder" placeholder="https://example.com" required>
-                    </div>
-                </div>
-                
-                <!-- 2段目: オプション設定 -->
-                <div class="form-row options-row">
-                    <div class="form-group">
-                        <label data-i18n="slug_label">カスタムスラグ</label>
-                        <input type="text" id="slug" data-i18n="slug_placeholder" placeholder="my-secret-link">
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="limit_label">アクセス上限</label>
-                        <input type="number" id="limit" min="1" data-i18n="limit_placeholder" placeholder="例: 5">
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="expiry_label">有効期限</label>
-                        <input type="datetime-local" id="expiry">
-                    </div>
-                </div>
-                
-                <button type="submit" id="submit-btn" class="primary-btn" data-i18n="submit_btn">短縮URLを作成</button>
+                <!-- (中略) -->
             </form>
+
+            <!-- 管理パネル (初期状態は非表示) -->
+            <div id="admin-panel" style="display: none;" class="dashboard-form">
+                <h1 data-i18n="stats_title">リンク統計</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span data-i18n="clicks">クリック数</span>
+                        <div id="stat-clicks" class="stat-value">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <span data-i18n="limit">上限</span>
+                        <div id="stat-limit" class="stat-value">--</div>
+                    </div>
+                </div>
+
+                <div class="form-row options-row" style="margin-top: 2rem;">
+                    <div class="form-group">
+                        <label data-i18n="limit_label">アクセス上限を変更</label>
+                        <input type="number" id="edit-limit" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="expiry_label">有効期限を変更</label>
+                        <input type="datetime-local" id="edit-expiry">
+                    </div>
+                </div>
+                
+                <div class="admin-actions">
+                    <button id="save-settings-btn" class="primary-btn" data-i18n="save_btn">設定を保存</button>
+                    <button id="delete-link-btn" class="danger-btn" data-i18n="delete_btn">リンクを削除</button>
+                </div>
+            </div>
             
             <div id="result">
                 <div class="result-content">
                     <h2 data-i18n="success_title">作成完了！</h2>
-                    <div class="short-url-box">
-                        <input type="text" id="short-url-output" readonly>
-                        <button class="copy-btn" id="copy-btn" data-i18n="copy_btn">コピー</button>
+                    <div class="result-group">
+                        <label>Short URL</label>
+                        <div class="short-url-box">
+                            <input type="text" id="short-url-output" readonly>
+                            <button class="copy-btn" id="copy-btn" data-i18n="copy_btn">コピー</button>
+                        </div>
+                    </div>
+                    <div class="result-group" style="margin-top: 1.5rem;">
+                        <label data-i18n="admin_link_label">管理用URL</label>
+                        <div class="short-url-box">
+                            <input type="text" id="admin-url-output" readonly>
+                            <button class="copy-btn" id="copy-admin-btn" data-i18n="copy_btn">コピー</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -316,6 +316,67 @@ button.primary-btn:hover {
     font-weight: 700;
 }
 
+/* --- 管理パネル用 --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.stat-card span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-top: 0.5rem;
+    color: var(--primary);
+}
+
+.admin-actions {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.danger-btn {
+    width: 100%;
+    padding: 1.1rem;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1rem;
+}
+
+.danger-btn:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.result-group label {
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
 /* --- フッター・クレジット --- */
 footer {
     margin-top: 3rem;
