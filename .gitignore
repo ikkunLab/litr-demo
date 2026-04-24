@@ -1,0 +1,17 @@
+# Gemini CLI / Plans
+plans/
+*.md
+!README.md
+
+# Supabase Local
+.temp/
+supabase/.temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment (Safety first!)
+.env
+.env.local
+js/config.js.bak
