@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Supabase SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
     <!-- 超高級オーロラ背景 -->
@@ -72,11 +74,41 @@
                         <input type="datetime-local" id="expiry">
                     </div>
                 </div>
+
+                <!-- Litr Ultra: 高度な設定アコーディオン -->
+                <details class="advanced-details">
+                    <summary data-i18n="advanced_options">高度な設定 (Ultra)</summary>
+                    <div class="advanced-content">
+                        <div class="form-row options-row">
+                            <div class="form-group">
+                                <label data-i18n="password_label">パスワード保護</label>
+                                <input type="password" id="password" data-i18n="password_placeholder" placeholder="秘密の合言葉">
+                            </div>
+                            <div class="form-group" style="justify-content: center; align-items: flex-start;">
+                                <label data-i18n="self_destruct_label">自己破壊モード</label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="self-destruct">
+                                    <label for="self-destruct"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row options-row" style="margin-top: 1rem;">
+                            <div class="form-group">
+                                <label data-i18n="og_title_label">SNS用タイトル</label>
+                                <input type="text" id="og-title" placeholder="Special Link">
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="og_desc_label">SNS用説明文</label>
+                                <input type="text" id="og-desc" placeholder="This link will self-destruct.">
+                            </div>
+                        </div>
+                    </div>
+                </details>
                 
                 <button type="submit" id="submit-btn" class="primary-btn" data-i18n="submit_btn">短縮URLを作成</button>
             </form>
 
-            <!-- 管理パネル (初期状態は非表示) -->
+            <!-- 管理パネル -->
             <div id="admin-panel" style="display: none;" class="dashboard-form">
                 <h1 data-i18n="stats_title">リンク統計</h1>
                 <div class="stats-grid">
@@ -109,20 +141,30 @@
             
             <!-- 作成結果 -->
             <div id="result">
-                <div class="result-content">
+                <div class="result-content ultra-result">
                     <h2 data-i18n="success_title">作成完了！</h2>
-                    <div class="result-group">
-                        <label>Short URL</label>
-                        <div class="short-url-box">
-                            <input type="text" id="short-url-output" readonly>
-                            <button class="copy-btn" id="copy-btn" data-i18n="copy_btn">コピー</button>
+                    
+                    <div class="result-main-flex">
+                        <div class="result-urls">
+                            <div class="result-group">
+                                <label>Short URL</label>
+                                <div class="short-url-box">
+                                    <input type="text" id="short-url-output" readonly>
+                                    <button class="copy-btn" id="copy-btn" data-i18n="copy_btn">コピー</button>
+                                </div>
+                            </div>
+                            <div class="result-group" style="margin-top: 1.5rem;">
+                                <label data-i18n="admin_link_label">管理用URL</label>
+                                <div class="short-url-box">
+                                    <input type="text" id="admin-url-output" readonly>
+                                    <button class="copy-btn" id="copy-admin-btn" data-i18n="copy_btn">コピー</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="result-group" style="margin-top: 1.5rem;">
-                        <label data-i18n="admin_link_label">管理用URL</label>
-                        <div class="short-url-box">
-                            <input type="text" id="admin-url-output" readonly>
-                            <button class="copy-btn" id="copy-admin-btn" data-i18n="copy_btn">コピー</button>
+                        
+                        <div class="result-qr">
+                            <label data-i18n="qr_title">QRコード</label>
+                            <div id="qrcode"></div>
                         </div>
                     </div>
                 </div>

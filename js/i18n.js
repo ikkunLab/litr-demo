@@ -6,9 +6,9 @@ const i18n = {
         url_placeholder: "https://example.com",
         slug_label: "カスタムスラグ (任意)",
         slug_placeholder: "my-secret-link",
-        limit_label: "アクセス上限回数 (任意)",
+        limit_label: "アクセス上限",
         limit_placeholder: "例: 5",
-        expiry_label: "有効期限 (任意)",
+        expiry_label: "有効期限",
         submit_btn: "短縮URLを作成",
         creating_btn: "作成中...",
         success_title: "作成完了！",
@@ -29,7 +29,20 @@ const i18n = {
         not_found: "リンクが見つかりません。",
         expired: "このリンクは有効期限が切れています。",
         limit_reached: "このリンクはアクセス上限に達しました。",
-        back_to_top: "← トップに戻る"
+        back_to_top: "← トップに戻る",
+        
+        // --- Litr Ultra ---
+        advanced_options: "高度な設定 (Ultra)",
+        password_label: "パスワード保護 (任意)",
+        password_placeholder: "秘密の合言葉",
+        self_destruct_label: "自己破壊モード (1回アクセスで消滅)",
+        og_title_label: "SNSプレビュー用タイトル",
+        og_desc_label: "SNSプレビュー用説明文",
+        qr_title: "QRコード",
+        enter_password_title: "パスワードが必要です",
+        enter_password_desc: "このリンクは保護されています。パスワードを入力してください。",
+        unlock_btn: "解除して転送",
+        invalid_password: "パスワードが正しくありません。"
     },
     en: {
         title: "Litr",
@@ -38,9 +51,9 @@ const i18n = {
         url_placeholder: "https://example.com",
         slug_label: "Custom Slug (Optional)",
         slug_placeholder: "my-secret-link",
-        limit_label: "Access Limit (Optional)",
+        limit_label: "Access Limit",
         limit_placeholder: "e.g. 5",
-        expiry_label: "Expiry Date (Optional)",
+        expiry_label: "Expiry Date",
         submit_btn: "Create Short URL",
         creating_btn: "Creating...",
         success_title: "Created Successfully!",
@@ -61,7 +74,20 @@ const i18n = {
         not_found: "Link not found.",
         expired: "This link has expired.",
         limit_reached: "Access limit reached.",
-        back_to_top: "← Back to Home"
+        back_to_top: "← Back to Home",
+
+        // --- Litr Ultra ---
+        advanced_options: "Advanced Options (Ultra)",
+        password_label: "Password Protection (Optional)",
+        password_placeholder: "Secret Password",
+        self_destruct_label: "Self-Destruct Mode (Burn after reading)",
+        og_title_label: "Custom SNS Title",
+        og_desc_label: "Custom SNS Description",
+        qr_title: "QR Code",
+        enter_password_title: "Password Protected",
+        enter_password_desc: "This link is protected. Please enter the password.",
+        unlock_btn: "Unlock & Redirect",
+        invalid_password: "Invalid password."
     }
 };
 
